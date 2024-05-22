@@ -1,14 +1,20 @@
 #!/bin/bash
 
+# Usage: sudo sh ./delete-service.sh
+
 # Check if root
-if [[ $EUID -ne 0 ]]; then
+if [ $EUID -ne 0 ]; then
    echo "This script must be run as root"
    exit 1
 fi
 
 # List custom services matching the "nc-*" naming convention
 echo "Listing custom services:"
-systemctl list-units --type=service --state=running | grep ".service" | awk '{print $1}'
+
+echo "----------------"
+systemctl list-units --type=service | grep "nc-.*" | awk '{print $1}'
+echo "----------------"
+
 echo "Enter the full service name to delete (e.g., nc-datetime.service), or type 'exit' to quit:"
 read SERVICE_NAME
 
@@ -42,7 +48,7 @@ systemctl daemon-reload
 systemctl reset-failed
 
 # Optional: Remove log files
-LOG_DIR="/var/log/$SERVICE_NAME"
+LOG_DIR="/var/log/service-logs/$SERVICE_NAME"
 if [ -d "$LOG_DIR" ]; then
     echo "Do you want to delete the log directory at $LOG_DIR? (yes/no)"
     read LOG_CONFIRM

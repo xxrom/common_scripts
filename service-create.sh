@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Usage: ./create_service.sh servicename "command to execute"
+# Usage: ./service-create.sh servicename "command to execute"
 
 # Define variables
 SERVICE_NAME="nc-$1"
@@ -10,10 +10,10 @@ LOG_DIR="/var/log/service-logs"
 LOG_FILE="$LOG_DIR/$SERVICE_NAME.log"
 
 # Check if root
-if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root"
-   exit 1
-fi
+#if [[ $EUID -ne 0 ]]; then
+#   echo "This script must be run as root"
+#   exit 1
+#fi
 
 # Check parameters
 if [ -z "$SERVICE_NAME" ] || [ -z "$EXEC_COMMAND" ]; then
@@ -35,10 +35,9 @@ After=network.target
 
 [Service]
 Type=simple
-User=nobody
 ExecStart=/bin/sh -c "$EXEC_COMMAND >> $LOG_FILE 2>&1"
 Restart=always
-RestartSec=30
+RestartSec=120
 
 [Install]
 WantedBy=multi-user.target
