@@ -22,7 +22,7 @@ logfile="$logpath/$name.log"
 ensure_logfile_exists() {
     if [ ! -f "$logfile" ]; then
         touch "$logfile"
-        chmod 644 "$logfile"
+        chmod 666 "$logfile"
         echo "Created log file: $logfile"
     else
         echo "Already created log file: $logfile"
