@@ -13,7 +13,7 @@ COMMAND="/usr/bin/autossh -M 0 -o StrictHostKeyChecking=no -o ServerAliveInterva
 # Execute the tunnel command
 echo ">>> MONITOR"
 
-sudo sh ./monitor-add-cron.sh "tunnel-monitor-$PORT" "178.128.195.181:$PORT" "nc-tunnel-$PORT"
+sudo sh ./monitor-add-cron.sh "tunnel-monitor-cloud-$PORT_CLOUD-pc-$PORT_PC" "178.128.195.181:$PORT" "nc-tunnel-$PORT_CLOUD-$PORT_PC"
 
 echo ">>> TUNNEL-SERVICE"
 echo "$COMMAND"

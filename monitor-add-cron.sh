@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo "Example: job-name https://litl.cloud nc-tunnel-5454 (without '.service' part)"
+
 # Get inputs
 name=$1 # unique name for the job:
 url=$2 # Enter URL to monitor:
