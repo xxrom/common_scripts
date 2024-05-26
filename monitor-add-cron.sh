@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Example: job-name https://litl.cloud nc-tunnel-5454 (without '.service' part)"
+echo "Example: job-name https://l.c nc-tunnel-5454 (without '.service' part)"
 
 # Get inputs
 name=$1 # unique name for the job:

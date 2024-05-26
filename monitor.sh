@@ -38,10 +38,11 @@ log() {
 
 while true; do
     # Perform the check
-    if curl -s --head "$url" | grep -q "200 OK"; then
+    if curl -s --head "$url" | grep -q "200"; then
         log "^"
     else
         log "Service is down. Restarting: '$name'"
+        log "curl -s --head '$url' | grep '200'"
         eval "$restart_command"
     fi
 
