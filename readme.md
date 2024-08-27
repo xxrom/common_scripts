@@ -1,3 +1,12 @@
+# IMPORTANT !
+
+Check:
+`sudo vi /etc/ssh/sshd_confi`
+`AllowTcpForwarding yes
+GatewayPorts yes`
+`sudo systemctl restart sshd`
+`sudo systemctl restart ssh`
+
 ## Steps
 
 1. Create SERVICE that will start project locally on some PORT
